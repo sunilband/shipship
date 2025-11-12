@@ -42,6 +42,11 @@ export const languages: Record<string, string> = {
 };
 
 export const themes: Record<string, { background: string; theme: string }> = {
+  midnight: {
+    background: "bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800",
+    theme:
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css",
+  },
   hyper: {
     background: "bg-gradient-to-br from-fuchsia-500 via-red-600 to-orange-400",
     theme:
@@ -92,6 +97,21 @@ export const themes: Record<string, { background: string; theme: string }> = {
     background: "bg-gradient-to-br from-rose-100 to-teal-100",
     theme:
       "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/ashes.min.css",
+  },
+  forest: {
+    background: "bg-gradient-to-br from-emerald-700 via-green-600 to-lime-500",
+    theme:
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/gruvbox-dark-medium.min.css",
+  },
+  dusk: {
+    background: "bg-gradient-to-br from-violet-600 via-purple-700 to-slate-900",
+    theme:
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/nord.min.css",
+  },
+  ember: {
+    background: "bg-gradient-to-br from-amber-600 via-red-700 to-rose-900",
+    theme:
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/dracula.min.css",
   },
 };
 
