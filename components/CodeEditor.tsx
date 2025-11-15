@@ -27,14 +27,18 @@ export default function CodeEditor() {
     }
   }, [store.autoDetectLanguage, store.code]);
 
+  // Count the number of lines so we can render the optional gutter
+  const lineCount = store.code.split("\n").length;
+
   return (
     <div
       className={cn(
-        "border-2 rounded-xl shadow-2xl",
+        "border-2 shadow-2xl",
         store.darkMode
           ? "bg-black/75 border-gray-600/40"
           : "bg-white/75 border-gray-200/20"
       )}
+      style={{ borderRadius: store.borderRadius }}
     >
       <header className="grid grid-cols-6 gap-3 items-center px-4 py-3">
         <div className="flex gap-1.5">
@@ -61,12 +65,28 @@ export default function CodeEditor() {
       </header>
       <div
         className={cn(
-          "px-4 pb-4",
+          "px-4 pb-4 flex",
           store.darkMode
             ? "brightness-110"
             : "text-gray-800 brightness-50 saturate-200 contrast-200"
         )}
       >
+        {store.showLineNumbers && (
+          <div
+            aria-hidden="true"
+            className="select-none text-right pr-4 text-gray-500/70"
+            style={{
+              fontFamily: fonts[store.fontStyle as keyof typeof fonts].name,
+              fontSize: store.fontSize,
+              lineHeight: 1.25,
+              paddingTop: 10,
+            }}
+          >
+            {Array.from({ length: lineCount }, (_, i) => (
+              <div key={i}>{i + 1}</div>
+            ))}
+          </div>
+        )}
         <Editor
           value={store.code}
           onValueChange={(code) => usePreferencesStore.setState({ code })}
@@ -77,6 +97,7 @@ export default function CodeEditor() {
           style={{
             fontFamily: fonts[store.fontStyle as keyof typeof fonts].name,
             fontSize: store.fontSize,
+            lineHeight: 1.25,
           }}
           textareaClassName="focus:outline-none"
           onClick={(e) => {
