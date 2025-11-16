@@ -20,6 +20,8 @@ import FontSizeInput from "@/components/controls/FontSizeInput";
 import PaddingSlider from "@/components/controls/PaddingSlider";
 import BackgroundSwitch from "@/components/controls/BackgroundSwitch";
 import DarkModeSwitch from "@/components/controls/DarkModeSwitch";
+import LineNumbersSwitch from "@/components/controls/LineNumbersSwitch";
+import RadiusSlider from "@/components/controls/RadiusSlider";
 import ExportOptions from "@/components/controls/ExportOptions";
 
 function App() {
@@ -43,8 +45,11 @@ function App() {
       code: state.code ? atob(state.code) : "",
       autoDetectLanguage: state.autoDetectLanguage === "true",
       darkMode: state.darkMode === "true",
+      showBackground: state.showBackground !== "false",
+      showLineNumbers: state.showLineNumbers === "true",
       fontSize: Number(state.fontSize || 18),
       padding: Number(state.padding || 64),
+      borderRadius: Number(state.borderRadius || 12),
     });
   }, []);
 
@@ -107,10 +112,21 @@ function App() {
           <FontSelect />
           <FontSizeInput />
           <PaddingSlider />
+          <RadiusSlider />
           <BackgroundSwitch />
           <DarkModeSwitch />
+          <LineNumbersSwitch />
           <div className="w-px bg-neutral-800" />
-          <div className="place-self-center">
+          <div className="place-self-center flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="ghost"
+              title="Reset all settings"
+              onClick={() => usePreferencesStore.getState().resetPreferences()}
+            >
+              <ResetIcon className="mr-2" />
+              Reset
+            </Button>
             <ExportOptions
               targetRef={
                 editorRef as unknown as React.RefObject<HTMLDivElement>
