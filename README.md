@@ -1,18 +1,51 @@
-# Sinppix - Code Screenshot
+# Snippix — Code Screenshot Tool
 
-A powerful tool for sharing code snippets with additional features. Share beautiful screenshots of your code on your social media platforms.
+A simple tool for turning code into beautiful, shareable screenshots. Create
+clean images of your snippets and drop them straight into your blog posts,
+docs, or social media.
 
-Project Live at: https://snippix.vercel.app/
+Project live at: https://snippix.vercel.app/
 
 ---
 
-## 🎨 Features
+## ✨ Features
 
-- 10+ elegant themes (light + dark theme included).
-- 12+ font styles (popular monospace fonts).
+- 13+ elegant gradient themes (light + dark friendly).
+- 14+ monospace font styles (JetBrains Mono, Fira Code, Cascadia Code, and more).
 - Auto-detection & syntax highlighting for all major programming languages.
-- Export as PNG/SVG, copy to clipboard, or share via link.
-- Change font size, background, padding, line numbers, and more.
+- Optional line numbers for longer snippets.
+- Adjustable window corner radius, padding, font size and background.
+- Export as PNG/SVG, copy the image to your clipboard, or share via link.
+- One-click reset to get back to a clean slate (keeps your code).
+- Settings persist locally, so your setup is there next time you visit.
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Action          | Shortcut         |
+| --------------- | ---------------- |
+| Copy image      | `Ctrl + C`       |
+| Copy share link | `Shift + Ctrl + C` |
+| Save as PNG     | `Ctrl + S`       |
+| Save as SVG     | `Shift + Ctrl + S` |
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# install dependencies
+pnpm install
+
+# start the dev server
+pnpm dev
+
+# build for production
+pnpm build
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
@@ -38,3 +71,10 @@ Project Live at: https://snippix.vercel.app/
   – Keyboard shortcuts made easy
 - [**Resizable**](https://github.com/bokuweb/react-resizable-box) – Resizable
   container component
+
+---
+
+## 🤝 Contributing
+
+Issues and pull requests are welcome. If you have an idea for a new theme or a
+feature, feel free to open one.
