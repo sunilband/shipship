@@ -7,13 +7,13 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    optimizeCss: true,
+    inlineCss: true,
   },
   async redirects() {
     return [
       {
         source: "/owner",
-        destination: "https://github.com/aayushbharti",
+        destination: "https://github.com/sunilband",
         permanent: true,
       },
     ];
