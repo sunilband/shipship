@@ -36,6 +36,8 @@ interface PreferencesState {
   fontStyle: string;
   padding: number;
   borderRadius: number;
+  exportScale: number;
+  showWindowControls: boolean;
 
   // Setters
   setCode: (code: string) => void;
@@ -50,6 +52,8 @@ interface PreferencesState {
   setFontStyle: (style: string) => void;
   setPadding: (padding: number) => void;
   setBorderRadius: (radius: number) => void;
+  setExportScale: (scale: number) => void;
+  toggleWindowControls: () => void;
   resetPreferences: () => void;
 }
 
@@ -67,6 +71,8 @@ const defaultPreferences = {
   fontStyle: "jetBrainsMono",
   padding: 64,
   borderRadius: 12,
+  exportScale: 2,
+  showWindowControls: true,
 };
 
 // Create a persistent Zustand store with type safety and update methods
@@ -90,6 +96,9 @@ export const usePreferencesStore = create<PreferencesState>()(
       setFontStyle: (style) => set({ fontStyle: style }),
       setPadding: (padding) => set({ padding }),
       setBorderRadius: (radius) => set({ borderRadius: radius }),
+      setExportScale: (scale) => set({ exportScale: scale }),
+      toggleWindowControls: () =>
+        set((state) => ({ showWindowControls: !state.showWindowControls })),
       // Reset styling preferences but keep the user's code, title and language
       resetPreferences: () =>
         set((state) => ({
