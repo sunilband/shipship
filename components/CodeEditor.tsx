@@ -79,7 +79,6 @@ export default function CodeEditor() {
               fontFamily: fonts[store.fontStyle as keyof typeof fonts].name,
               fontSize: store.fontSize,
               lineHeight: 1.25,
-              paddingTop: 10,
             }}
           >
             {Array.from({ length: lineCount }, (_, i) => (
