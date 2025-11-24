@@ -1,4 +1,10 @@
-import { DownloadIcon, ImageIcon, Link2Icon, Share2Icon } from "lucide-react";
+import {
+  CodeIcon,
+  DownloadIcon,
+  ImageIcon,
+  Link2Icon,
+  Share2Icon,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -19,6 +25,7 @@ export default function ExportOptions({
   targetRef: React.RefObject<HTMLDivElement>;
 }) {
   const title = usePreferencesStore((state) => state.title);
+  const exportScale = usePreferencesStore((state) => state.exportScale);
 
   const copyImage = async () => {
     const loading = toast.loading("Copying...");
@@ -26,7 +33,7 @@ export default function ExportOptions({
     try {
       // generate blob from DOM node using html-to-image library
       const imgBlob = await toBlob(targetRef.current, {
-        pixelRatio: 2,
+        pixelRatio: exportScale,
       });
 
       // Create a new ClipboardItem from the image blob
@@ -38,6 +45,17 @@ export default function ExportOptions({
     } catch (error) {
       console.error(error);
       toast.remove(loading);
+      toast.error("Something went wrong!");
+    }
+  };
+
+  const copyCode = async () => {
+    try {
+      const { code } = usePreferencesStore.getState();
+      await navigator.clipboard.writeText(code);
+      toast.success("Code copied to clipboard!");
+    } catch (error) {
+      console.error(error);
       toast.error("Something went wrong!");
     }
   };
@@ -73,11 +91,11 @@ export default function ExportOptions({
       let imgUrl, filename;
       switch (format) {
         case "PNG":
-          imgUrl = await toPng(targetRef.current, { pixelRatio: 2 });
+          imgUrl = await toPng(targetRef.current, { pixelRatio: exportScale });
           filename = `${name}.png`;
           break;
         case "SVG":
-          imgUrl = await toSvg(targetRef.current, { pixelRatio: 2 });
+          imgUrl = await toSvg(targetRef.current, { pixelRatio: exportScale });
           filename = `${name}.svg`;
           break;
 
@@ -103,7 +121,6 @@ export default function ExportOptions({
   useHotkeys("shift+ctrl+c", copyLink);
   useHotkeys("ctrl+s", () => saveImage(title, "PNG"));
   useHotkeys("shift+ctrl+s", () => saveImage(title, "SVG"));
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -124,6 +141,11 @@ export default function ExportOptions({
           <Link2Icon />
           Copy Link
           <DropdownMenuShortcut>⇧⌘C</DropdownMenuShortcut>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem className="gap-2" onClick={copyCode}>
+          <CodeIcon />
+          Copy Code
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
