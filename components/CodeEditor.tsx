@@ -42,9 +42,13 @@ export default function CodeEditor() {
     >
       <header className="grid grid-cols-6 gap-3 items-center px-4 py-3">
         <div className="flex gap-1.5">
-          <div className="rounded-full h-2 w-2 bg-red-500"></div>
-          <div className="rounded-full h-2 w-2 bg-yellow-500"></div>
-          <div className="rounded-full h-2 w-2 bg-green-500"></div>
+          {store.showWindowControls && (
+            <>
+              <div className="rounded-full h-2 w-2 bg-red-500"></div>
+              <div className="rounded-full h-2 w-2 bg-yellow-500"></div>
+              <div className="rounded-full h-2 w-2 bg-green-500"></div>
+            </>
+          )}
         </div>
         <div className="col-span-4 flex justify-center">
           <input
