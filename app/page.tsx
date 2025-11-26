@@ -8,6 +8,7 @@ import { fonts } from "@/options";
 import { themes } from "@/options";
 import { cn } from "@/lib/utils";
 import CodeEditor from "@/components/CodeEditor";
+import Navbar from "@/components/Navbar";
 import WidthMeasurement from "@/components/WidthMeasurement";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +23,8 @@ import BackgroundSwitch from "@/components/controls/BackgroundSwitch";
 import DarkModeSwitch from "@/components/controls/DarkModeSwitch";
 import LineNumbersSwitch from "@/components/controls/LineNumbersSwitch";
 import RadiusSlider from "@/components/controls/RadiusSlider";
+import WindowControlsSwitch from "@/components/controls/WindowControlsSwitch";
+import ExportScaleSelect from "@/components/controls/ExportScaleSelect";
 import ExportOptions from "@/components/controls/ExportOptions";
 
 function App() {
@@ -47,9 +50,11 @@ function App() {
       darkMode: state.darkMode === "true",
       showBackground: state.showBackground !== "false",
       showLineNumbers: state.showLineNumbers === "true",
+      showWindowControls: state.showWindowControls !== "false",
       fontSize: Number(state.fontSize || 18),
       padding: Number(state.padding || 64),
       borderRadius: Number(state.borderRadius || 12),
+      exportScale: Number(state.exportScale || 2),
     });
   }, []);
 
@@ -65,6 +70,8 @@ function App() {
         href={fonts[fontStyle as keyof typeof fonts].src}
         crossOrigin="anonymous"
       />
+
+      <Navbar />
 
       <div className="w-full overflow-auto flex grow items-center justify-center p-4 border rounded-xl border-b-gray-900">
         <Resizable
@@ -116,6 +123,8 @@ function App() {
           <BackgroundSwitch />
           <DarkModeSwitch />
           <LineNumbersSwitch />
+          <WindowControlsSwitch />
+          <ExportScaleSelect />
           <div className="w-px bg-neutral-800" />
           <div className="place-self-center flex items-center gap-2">
             <Button
