@@ -1,10 +1,10 @@
-# Snippix — Code Screenshot Tool
+# snipship — Code Screenshot Tool
 
 A simple tool for turning code into beautiful, shareable screenshots. Create
 clean images of your snippets and drop them straight into your blog posts,
 docs, or social media.
 
-Project live at: https://snippix.vercel.app/
+Project live at: https://snipship.vercel.app/
 
 ---
 
