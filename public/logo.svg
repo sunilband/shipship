@@ -1,0 +1,15 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="snipshipLogo" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1" />
+      <stop offset="1" stop-color="#A855F7" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#snipshipLogo)" />
+  <circle cx="17" cy="17" r="2.5" fill="#ffffff" fill-opacity="0.95" />
+  <circle cx="25" cy="17" r="2.5" fill="#ffffff" fill-opacity="0.6" />
+  <circle cx="33" cy="17" r="2.5" fill="#ffffff" fill-opacity="0.35" />
+  <path d="M27 29 L19 39 L27 49" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M37 29 L45 39 L37 49" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M35 27 L29 51" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

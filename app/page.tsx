@@ -25,7 +25,6 @@ import LineNumbersSwitch from "@/components/controls/LineNumbersSwitch";
 import RadiusSlider from "@/components/controls/RadiusSlider";
 import WindowControlsSwitch from "@/components/controls/WindowControlsSwitch";
 import ExportScaleSelect from "@/components/controls/ExportScaleSelect";
-import ExportOptions from "@/components/controls/ExportOptions";
 
 function App() {
   const [width, setWidth] = useState("auto");
@@ -71,7 +70,9 @@ function App() {
         crossOrigin="anonymous"
       />
 
-      <Navbar />
+      <Navbar
+        targetRef={editorRef as unknown as React.RefObject<HTMLDivElement>}
+      />
 
       <div className="w-full overflow-auto flex grow items-center justify-center p-4 border rounded-xl border-b-gray-900">
         <Resizable
@@ -125,23 +126,6 @@ function App() {
           <LineNumbersSwitch />
           <WindowControlsSwitch />
           <ExportScaleSelect />
-          <div className="w-px bg-neutral-800" />
-          <div className="place-self-center flex items-center gap-2">
-            <Button
-              size="sm"
-              variant="ghost"
-              title="Reset all settings"
-              onClick={() => usePreferencesStore.getState().resetPreferences()}
-            >
-              <ResetIcon className="mr-2" />
-              Reset
-            </Button>
-            <ExportOptions
-              targetRef={
-                editorRef as unknown as React.RefObject<HTMLDivElement>
-              }
-            />
-          </div>
         </CardContent>
       </Card>
     </main>
